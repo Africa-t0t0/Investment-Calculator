@@ -2,20 +2,18 @@ export default function UserInput({labelValue, inputValue, handleChange}) {
 
     return (
         <>
-            <div
-                className='input-group'
-            >
+            <p>
                 <label
-                    id='user-input'
                 >
                     {labelValue}
                 </label>
                 <input
-                    id='user-input'
                     value={inputValue}
                     onChange={handleChange}
+                    type='number'
+                    required
                 />
-            </div>
+            </p>
         </>
     );
 }
