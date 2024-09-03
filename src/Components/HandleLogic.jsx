@@ -12,7 +12,7 @@ export default function HandleLogic() {
         initialInvestment: 10000,
         annualInvestment: 1200,
         expectedReturn: 6,
-        duration: 6
+        duration: 10
     });
     /*
     another way of doing this, is by setting a object that has all the variables, like this:
@@ -24,10 +24,10 @@ export default function HandleLogic() {
         setUserInput(prevUserInput => {
             return {
                 ...prevUserInput,
-                [inputIdentifier]: newValue
+                [inputIdentifier]: +newValue,
             }
         })
-     }
+     };
 
 
      // then we should use a function to handle all the changes
@@ -42,14 +42,16 @@ export default function HandleLogic() {
     //     );
     // }
 
-    const areAllValuesFilled2 = () => {
-        return (
-            useState.initialInvestment !== '' &
-            useState.annualInvestment !== '' &
-            useState.expectedReturn !== '' &
-            useState.duration !== ''
-        );
-    }
+    // const areAllValuesFilled2 = () => {
+    //     return (
+    //         useState.initialInvestment !== '' &
+    //         useState.annualInvestment !== '' &
+    //         useState.expectedReturn !== '' &
+    //         useState.duration !== ''
+    //     );
+    // };
+
+    const durationIsValid = userInput.duration >= 1;
 
     return (
         <>
@@ -67,8 +69,9 @@ export default function HandleLogic() {
                 userInput={userInput}
                 handleChange={handleChange}
             />
+            {!durationIsValid && <p className='center'>Either one of the inputs is invalid, check!</p>}
 
-            {areAllValuesFilled2() &&
+            {durationIsValid &&
             <ResultTable
                 initialInvestmentValue={userInput.initialInvestment}
                 annualInvestmentValue={userInput.annualInvestment}
