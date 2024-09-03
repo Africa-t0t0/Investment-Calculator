@@ -10,7 +10,7 @@ export default function ResultTable({
     const investmentResults = calculateInvestmentResults(
         {initialInvestment: initialInvestmentValue, annualInvestment: annualInvestmentValue, expectedReturn: expectedReturnValue, duration: durationValue}
     );
-    console.log('result', investmentResults)
+
     return (
         <>
             <table id='result'>
